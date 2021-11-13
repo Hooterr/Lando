@@ -14,6 +14,7 @@ namespace Lando
 		public static MauiApp CreateMauiApp()
 		{
 			ServiceProvider = new ServiceCollection()
+				
 				.ConfigureServices()
 				.BuildServiceProvider();
 

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              x:Class="Lando.LoadingPage"
+              xmlns:local="clr-namespace:Lando"
+              Shell.NavBarIsVisible="false"
+              xmlns:pages="clr-namespace:Lando.PageModels"
+              x:DataType="pages:LoadingPageModel"
+              local:ViewModelLocator.AutoWireViewModel="True">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center">
+            <ActivityIndicator IsRunning="True"/>
+            <Label Text="Uruchamianie..."
+                   Padding="0,10,0,0"
+                   x:Name="LoadingText"
+                   Opacity="0"
+                   HorizontalTextAlignment="Center" />
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

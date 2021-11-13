@@ -2,9 +2,9 @@
 
 namespace Lando
 {
-    public partial class Page1 : ContentPage
+    public partial class LoginPage : ContentPage
     {
-        public Page1()
+        public LoginPage()
         {
             InitializeComponent();
         }
