@@ -1,0 +1,55 @@
+﻿<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       x:Class="Lando.MainPage"
+       xmlns:local="clr-namespace:Lando"
+       Shell.TabBarBackgroundColor="Orange"
+       Shell.TabBarForegroundColor="Orange"
+       Shell.TabBarUnselectedColor="Grey"
+       Shell.TabBarTitleColor="Black">
+
+    <TabBar>
+        
+        <ShellContent Route="home"
+                      ContentTemplate="{DataTemplate local:HomePage}"
+                      Title="Home">
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="FA"
+                                 Glyph="{x:Static local:Glyps.Home}">
+                    
+                </FontImageSource>
+            </ShellContent.Icon>
+        </ShellContent>
+        
+        <ShellContent Title="Przeglądaj"
+                          Route="browse"
+                          ContentTemplate="{DataTemplate local:BrowsePage}">
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="FA"
+                                 Glyph="{x:Static local:Glyps.Search}">
+
+                </FontImageSource>
+            </ShellContent.Icon>
+        </ShellContent>
+        
+        <ShellContent Title="Koszyk"
+                          Route="cart"
+                          ContentTemplate="{DataTemplate local:CartPage}">
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="FA"
+                                 Glyph="{x:Static local:Glyps.ShoppingCart}">
+
+                </FontImageSource>
+            </ShellContent.Icon>
+        </ShellContent>
+        <ShellContent Title="Profil"
+                          Route="profile"
+                          ContentTemplate="{DataTemplate local:ProfilePage}">
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="FA"
+                                 Glyph="{x:Static local:Glyps.User}">
+
+                </FontImageSource>
+            </ShellContent.Icon>
+        </ShellContent>
+    </TabBar>
+</Shell>
