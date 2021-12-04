@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Lando.OfferDetailsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:apimodels="clr-namespace:Lando.ApiModels"
+    xmlns:local="clr-namespace:Lando"
+    xmlns:offers="clr-namespace:Lando.ApiModels.Offers"
+    xmlns:pagemodels="clr-namespace:Lando.PageModels"
+    xmlns:products="clr-namespace:Lando.ApiModels.Products"
+    x:Name="Page"
+    Title="{Binding Title}"
+    local:ViewModelLocator.AutoWireViewModel="true"
+    x:DataType="pagemodels:OfferDetailsPageModel"
+    Shell.NavBarHasShadow="True"
+    Shell.NavBarIsVisible="True">
+    <ContentPage.Resources>
+        <ResourceDictionary />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Label
+                Text="{Binding Offer.Name}" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

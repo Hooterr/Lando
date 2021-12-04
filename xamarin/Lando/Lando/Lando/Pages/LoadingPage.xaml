@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Lando.LoadingPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Lando"
+    xmlns:pages="clr-namespace:Lando.PageModels"
+    local:ViewModelLocator.AutoWireViewModel="True"
+    x:DataType="pages:LoadingPageModel"
+    Shell.NavBarIsVisible="false">
+    <ContentPage.Content>
+        <StackLayout
+            VerticalOptions="Center">
+            <ActivityIndicator
+                IsRunning="True" />
+            <Label
+                x:Name="LoadingText"
+                Padding="0,10,0,0"
+                HorizontalTextAlignment="Center"
+                Opacity="0"
+                Text="Uruchamianie..." />
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

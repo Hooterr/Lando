@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Lando.HomePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Lando"
+    xmlns:models="clr-namespace:Lando.PageModels"
+    local:ViewModelLocator.AutoWireViewModel="true"
+    x:DataType="models:HomePageModel"
+    Shell.NavBarIsVisible="false">
+    <ContentPage.Content>
+        <ScrollView>
+
+            <StackLayout>
+                <Label
+                    FontFamily="FA"
+                    Text="{x:Static local:Glyps.Airbnb}" />
+                <Label
+                    Text="Home page" />
+                <Label
+                    FontFamily="FA"
+                    Text="{x:Static local:Glyps.Heart}" />
+                <Label
+                    FontFamily="FA"
+                    Text="{x:Static local:Glyps.Angellist}" />
+                <Label
+                    Text="{Binding JsonContent}" />
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Lando.LoginStartPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Lando"
+    xmlns:pagemodels="clr-namespace:Lando.PageModels"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    local:ViewModelLocator.AutoWireViewModel="true"
+    x:DataType="pagemodels:LoginStartPageModel"
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarIsVisible="False">
+    <ContentPage.Content>
+        <StackLayout
+            Padding="20"
+            Spacing="10"
+            VerticalOptions="Center">
+
+            <Label
+                Padding="0,0,0,20"
+                FontSize="24"
+                HorizontalTextAlignment="Center"
+                Text="Witaj w aplikacji!" />
+
+            <Button
+                Command="{Binding LoginCommand}"
+                Text="Zaloguj się" />
+
+            <Button
+                Command="{Binding ContinueWithoutLoginCommand}"
+                Text="Korzystaj bez logowania" />
+
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Lando.BrowsePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:apimodels="clr-namespace:Lando.ApiModels"
+    xmlns:local="clr-namespace:Lando"
+    xmlns:pagemodels="clr-namespace:Lando.PageModels"
+    x:Name="Page"
+    local:ViewModelLocator.AutoWireViewModel="true"
+    x:DataType="pagemodels:BrowsePageModel"
+    Shell.NavBarHasShadow="True"
+    Shell.NavBarIsVisible="False">
+
+    <ContentPage.Content>
+
+        <CollectionView
+            Margin="10"
+            BackgroundColor="{StaticResource Primary}"
+            ItemsSource="{Binding Categories}"
+            SelectionMode="None">
+            <CollectionView.Header>
+                <StackLayout>
+
+                    <Frame
+                        Padding="10"
+                        BackgroundColor="{StaticResource Accent}">
+                        <Label
+                            Text="Wyszukaj po nazwie"
+                            TextColor="{StaticResource Primary}" />
+
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding GoToSearchCommand}" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+
+
+                    <Frame
+                        Padding="10"
+                        BackgroundColor="{StaticResource Accent}"
+                        IsVisible="{Binding IsBackCategoryButtonVisible}">
+                        <Label
+                            TextColor="{StaticResource Primary}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        FontFamily="FA"
+                                        Text="{x:Static local:Glyps.ArrowLeft}" />
+                                    <Span
+                                        Text=" Wstecz" />
+                                </FormattedString>
+                            </Label.FormattedText>
+
+                        </Label>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding CategoryBackCommand}" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+
+                    <Frame
+                        Padding="10"
+                        BackgroundColor="{StaticResource Secondary}"
+                        IsVisible="{Binding IsBackCategoryButtonVisible}">
+                        <Label
+                            TextColor="{StaticResource Primary}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        Text="Zobacz oferty z " />
+                                    <Span
+                                        Text="{Binding SelectedCategory.Name}"
+                                        TextColor="{StaticResource Accent}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding ShowProductsCommand}" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </StackLayout>
+            </CollectionView.Header>
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout
+                    HorizontalItemSpacing="15"
+                    Orientation="Vertical"
+                    Span="2"
+                    VerticalItemSpacing="15" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate
+                    x:DataType="apimodels:CategoryItemModel">
+                    <Frame
+                        BackgroundColor="{StaticResource Accent}"
+                        HasShadow="false">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding BindingContext.CategorySelectedCommand, Source={x:Reference Page}}"
+                                CommandParameter="{Binding}" />
+                        </Frame.GestureRecognizers>
+                        <Label
+                            Text="{Binding Name}"
+                            TextColor="White"
+                            VerticalTextAlignment="Center" />
+                    </Frame>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </ContentPage.Content>
+</ContentPage>

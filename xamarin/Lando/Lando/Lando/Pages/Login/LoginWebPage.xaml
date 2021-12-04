@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Lando.LoginWebPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Lando"
+    xmlns:pagemodels="clr-namespace:Lando.PageModels"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    local:ViewModelLocator.AutoWireViewModel="true"
+    x:DataType="pagemodels:LoginWebPageModel"
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarIsVisible="False">
+    <ContentPage.Content>
+        <Grid>
+            <WebView
+                Navigated="WebView_Navigated"
+                Navigating="WebView_Navigating"
+                Source="{Binding BrowserSource}"
+                VerticalOptions="Fill">
+                <WebView.Behaviors>
+                    <xct:EventToCommandBehavior
+                        Command="{Binding BrowserNavigatingCommand}"
+                        EventName="Navigating" />
+                </WebView.Behaviors>
+            </WebView>
+
+            <ActivityIndicator
+                x:Name="loading"
+                HorizontalOptions="Center"
+                IsRunning="True"
+                VerticalOptions="Center" />
+
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

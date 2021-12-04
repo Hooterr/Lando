@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application
+    x:Class="Lando.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="http://xamarin.com/schemas/2020/toolkit">
+    <!--
+        Define global resources and styles here, that apply to all pages in your app.
+    -->
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color
+                x:Key="Primary">
+                #EEE
+            </Color>
+            <Color
+                x:Key="PrimaryDark">
+                #444
+            </Color>
+            <Color
+                x:Key="Secondary">
+                #777
+            </Color>
+            <Color
+                x:Key="Accent">
+                #F56A4D
+            </Color>
+
+            <x:String
+                x:Key="OpenSansRegular">
+                OpenSansRegular
+            </x:String>
+            <x:String
+                x:Key="Black">
+                Black
+            </x:String>
+            <x:String
+                x:Key="BlackItalic">
+                BlackItalic
+            </x:String>
+            <x:String
+                x:Key="Bold">
+                Bold
+            </x:String>
+            <x:String
+                x:Key="BoldItalic">
+                BoldItalic
+            </x:String>
+            <x:String
+                x:Key="Italic">
+                Italic
+            </x:String>
+            <x:String
+                x:Key="Light">
+                Light
+            </x:String>
+            <x:String
+                x:Key="LightItalic">
+                LightItalic
+            </x:String>
+            <x:String
+                x:Key="Regular">
+                Regular
+            </x:String>
+            <x:String
+                x:Key="Thinen">
+                Thinen
+            </x:String>
+            <x:String
+                x:Key="ThinItalic">
+                ThinItalic
+            </x:String>
+            <x:String
+                x:Key="FA">
+                FA
+            </x:String>
+
+            <Style
+                ApplyToDerivedTypes="True"
+                TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+            </Style>
+
+            <Style
+                TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource Regular}" />
+                <Setter Property="TextColor" Value="{StaticResource PrimaryDark}" />
+            </Style>
+
+            <Style
+                TargetType="Entry">
+                <Setter Property="FontFamily" Value="{StaticResource Regular}" />
+                <Setter Property="TextColor" Value="{StaticResource PrimaryDark}" />
+                <Setter Property="PlaceholderColor" Value="{StaticResource Secondary}" />
+            </Style>
+
+            <Style
+                TargetType="Frame">
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="Background" Value="{StaticResource Secondary}" />
+            </Style>
+
+            <Style
+                TargetType="Button">
+                <Setter Property="FontFamily" Value="{StaticResource Regular}" />
+                <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup
+                            x:Name="CommonStates">
+                            <VisualState
+                                x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource Accent}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState
+                                x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#33A29CF4" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <behaviors:InvertedBoolConverter
+                x:Key="InvertedBoolConverter" />
+        </ResourceDictionary>
+
+
+
+    </Application.Resources>
+</Application>

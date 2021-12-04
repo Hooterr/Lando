@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Lando.AppShell"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Lando"
+    Shell.BackgroundColor="{StaticResource Primary}"
+    Shell.ForegroundColor="{StaticResource PrimaryDark}"
+    Shell.NavBarHasShadow="True"
+    Shell.TabBarBackgroundColor="#eeefff"
+    Shell.TabBarForegroundColor="{StaticResource Secondary}"
+    Shell.TabBarTitleColor="{StaticResource Accent}"
+    Shell.TabBarUnselectedColor="{StaticResource PrimaryDark}"
+    Shell.TitleColor="{StaticResource PrimaryDark}">
+
+    <TabBar>
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate local:HomePage}"
+            Route="home">
+            <ShellContent.Icon>
+                <FontImageSource
+                    FontFamily="FA"
+                    Glyph="{x:Static local:Glyps.Home}" />
+            </ShellContent.Icon>
+        </ShellContent>
+
+        <ShellContent
+            Title="Przeglądaj"
+            ContentTemplate="{DataTemplate local:BrowsePage}"
+            Route="browse">
+            <ShellContent.Icon>
+                <FontImageSource
+                    FontFamily="FA"
+                    Glyph="{x:Static local:Glyps.Search}" />
+            </ShellContent.Icon>
+        </ShellContent>
+
+        <ShellContent
+            Title="Koszyk"
+            ContentTemplate="{DataTemplate local:CartPage}"
+            Route="cart">
+            <ShellContent.Icon>
+                <FontImageSource
+                    FontFamily="FA"
+                    Glyph="{x:Static local:Glyps.ShoppingCart}" />
+            </ShellContent.Icon>
+        </ShellContent>
+        <ShellContent
+            Title="Profil"
+            ContentTemplate="{DataTemplate local:ProfilePage}"
+            Route="profile">
+            <ShellContent.Icon>
+                <FontImageSource
+                    FontFamily="FA"
+                    Glyph="{x:Static local:Glyps.User}" />
+            </ShellContent.Icon>
+        </ShellContent>
+    </TabBar>
+
+    <TabBar>
+        <ShellContent
+            x:Name="LoadingShell"
+            ContentTemplate="{DataTemplate local:LoadingPage}"
+            Route="loading" />
+
+        <ShellContent
+            ContentTemplate="{DataTemplate local:LoginStartPage}"
+            Route="loginstart" />
+    </TabBar>
+
+</Shell>

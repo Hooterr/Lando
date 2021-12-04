@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Lando.ProductListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:apimodels="clr-namespace:Lando.ApiModels"
+    xmlns:local="clr-namespace:Lando"
+    xmlns:offers="clr-namespace:Lando.ApiModels.Offers"
+    xmlns:pagemodels="clr-namespace:Lando.PageModels"
+    xmlns:products="clr-namespace:Lando.ApiModels.Products"
+    x:Name="Page"
+    local:ViewModelLocator.AutoWireViewModel="true"
+    x:DataType="pagemodels:ProductListPageModel"
+    Shell.NavBarHasShadow="True"
+    Shell.NavBarIsVisible="True">
+    <Shell.TitleView>
+        <StackLayout
+            Padding="0,0,20,0"
+            Orientation="Horizontal">
+            <Entry
+                HorizontalOptions="FillAndExpand"
+                Placeholder="Wpisz czego szukasz"
+                Text="{Binding SearchText, Mode=TwoWay}" />
+            <Label
+                Grid.Column="1"
+                FontFamily="FA"
+                FontSize="20"
+                Text="{x:Static local:Glyps.Search}"
+                VerticalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding SearchCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+    </Shell.TitleView>
+    <ContentPage.Resources>
+        <ResourceDictionary />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <CollectionView
+            ItemsSource="{Binding Offers}">
+            <CollectionView.Header>
+                <StackLayout>
+                    <Label
+                        Text="{Binding CurrentCategory}" />
+                    <Button
+                        Command="{Binding RemoveCategoryFilterCommand}"
+                        Text="Usuń filter" />
+                </StackLayout>
+            </CollectionView.Header>
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout
+                    ItemSpacing="10"
+                    Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate
+                    x:DataType="offers:OfferItemModel">
+                    <Grid
+                        Padding="10"
+                        BackgroundColor="White"
+                        ColumnDefinitions="100,*"
+                        RowDefinitions="100">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding BindingContext.ItemSelectedCommand, Source={x:Reference Page}}"
+                                CommandParameter="{Binding}" />
+                        </Grid.GestureRecognizers>
+                        <Image
+                            Grid.Column="0"
+                            Source="{Binding DisplayImage}"
+                            VerticalOptions="Center" />
+                        <StackLayout
+                            Grid.Column="1">
+                            <Label
+                                Text="{Binding Name}" />
+                            <Label
+                                IsVisible="{Binding Seller.SuperSeller}"
+                                Text="Super sprzedawca" />
+
+                            <Label
+                                Text="{Binding SellingMode.FormatText}"
+                                TextColor="{StaticResource Accent}" />
+
+                            <Label
+                                FontFamily="Bold"
+                                FontSize="16">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span
+                                            Text="{Binding SellingMode.Price.Amount}" />
+                                        <Span
+                                            Text=" " />
+                                        <Span
+                                            Text="{Binding SellingMode.Price.Currency}" />
+
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                            <Label
+                                IsVisible="{Binding Delivery.AvailableForFree}"
+                                Text="Darmowa dostawa" />
+
+                            <Label
+                                FontFamily="Italic"
+                                IsVisible="{Binding Delivery.AvailableForFree, Converter={StaticResource InvertedBoolConverter}}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span
+                                            Text="Dostawa od " />
+                                        <Span
+                                            Text="{Binding Delivery.LowestPrice.Amount}" />
+                                        <Span
+                                            Text=" " />
+                                        <Span
+                                            Text="{Binding Delivery.LowestPrice.Currency}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                        </StackLayout>
+
+
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ContentPage.Content>
+</ContentPage>

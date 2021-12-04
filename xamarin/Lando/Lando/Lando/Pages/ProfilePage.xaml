@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Lando.ProfilePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Lando"
+    xmlns:pagemodels="clr-namespace:Lando.PageModels"
+    local:ViewModelLocator.AutoWireViewModel="True"
+    x:DataType="pagemodels:ProfilePageModel"
+    Shell.NavBarIsVisible="false">
+    <ContentPage.Content>
+        <StackLayout
+            Padding="10">
+            <Label
+                Text="{Binding Me.Login}" />
+            <Label
+                Text="{Binding Me.Id}" />
+            <Label
+                Text="{Binding Me.FirstName}" />
+            <Label
+                Text="{Binding Me.LastName}" />
+            <Label
+                Text="{Binding Me.Email}" />
+            <Button
+                Command="{Binding LogoutCommand}"
+                Text="Wyloguj" />
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>
