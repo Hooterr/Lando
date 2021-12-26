@@ -4,23 +4,149 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Lando"
+    xmlns:models="clr-namespace:Lando.Database.Models"
+    xmlns:pagemodels="clr-namespace:Lando.PageModels"
+    x:Name="Page"
     local:ViewModelLocator.AutoWireViewModel="true"
+    x:DataType="pagemodels:CartPageModel"
     Shell.NavBarIsVisible="false">
     <ContentPage.Content>
-        <StackLayout>
-            <Label
-                FontFamily="FA"
-                Text="{x:Static local:Glyps.Airbnb}" />
+        <Grid
+            RowDefinitions="*,Auto">
+            <CollectionView
+                ItemsSource="{Binding Cart}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout
+                        ItemSpacing="20"
+                        Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate
+                        x:DataType="models:CartOfferModel">
+                        <Grid
+                            Padding="10"
+                            ColumnDefinitions="100,*"
+                            RowDefinitions="60,30,20">
+                            <Image
+                                Grid.Column="0"
+                                Aspect="AspectFit"
+                                Source="{Binding Offer.DisplayImage}" />
+                            <Label
+                                Grid.Column="1"
+                                Text="{Binding Offer.Name}"
+                                VerticalTextAlignment="Center" />
 
-            <Label
-                Text="Cart page" />
-            <Label
-                FontFamily="FA"
-                Text="{x:Static local:Glyps.Heart}" />
-            <Label
-                FontFamily="FA"
-                Text="{x:Static local:Glyps.Angellist}" />
-        </StackLayout>
+                            <Grid
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                ColumnDefinitions="40,50,40">
+
+                                <BoxView
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    BackgroundColor="{StaticResource PrimaryDark}"
+                                    HeightRequest="1"
+                                    VerticalOptions="Start" />
+
+                                <BoxView
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    BackgroundColor="{StaticResource PrimaryDark}"
+                                    HeightRequest="1"
+                                    VerticalOptions="End" />
+
+                                <Label
+                                    Grid.Column="1"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{Binding Quantity}"
+                                    VerticalTextAlignment="Center" />
+
+                                <Button
+                                    Grid.Column="0"
+                                    BackgroundColor="Transparent"
+                                    BorderColor="{StaticResource PrimaryDark}"
+                                    BorderWidth="1"
+                                    Command="{Binding BindingContext.SubtractCommand, Source={x:Reference Page}}"
+                                    CommandParameter="{Binding}"
+                                    FontFamily="FA"
+                                    FontSize="12"
+                                    Text="{x:Static local:Glyps.Minus}"
+                                    TextColor="{StaticResource PrimaryDark}" />
+
+                                <Button
+                                    Grid.Column="2"
+                                    BackgroundColor="Transparent"
+                                    BorderColor="{StaticResource PrimaryDark}"
+                                    BorderWidth="1"
+                                    Command="{Binding BindingContext.AddCommand, Source={x:Reference Page}}"
+                                    CommandParameter="{Binding}"
+                                    FontFamily="FA"
+                                    FontSize="12"
+                                    Text="{x:Static local:Glyps.Plus}"
+                                    TextColor="{StaticResource PrimaryDark}" />
+                            </Grid>
+
+                            <StackLayout
+                                Grid.RowSpan="2"
+                                Grid.Column="1"
+                                HorizontalOptions="End"
+                                VerticalOptions="End">
+                                <Label
+                                    HorizontalTextAlignment="End">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span
+                                                Text="{Binding TotalPrice, StringFormat='{0:n2}'}" />
+                                            <Span
+                                                Text=" zł" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label
+                                    FontFamily="{StaticResource Regular}"
+                                    FontSize="12">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span
+                                                Text="za sztukę " />
+                                            <Span
+                                                Text="{Binding Offer.SellingMode.Price.Amount}" />
+                                            <Span
+                                                Text="{Binding Offer.SellingMode.Price.Currency}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <StackLayout
+                Grid.Row="1"
+                Padding="10">
+                <StackLayout
+                    Orientation="Horizontal">
+                    <Label
+                        Text="do zapłaty" />
+                    <Label
+                        FontFamily="{StaticResource Bold}"
+                        Text="9999">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    Text="{Binding TotalPrice, StringFormat='{0:n2}'}" />
+                                <Span
+                                    Text="zł" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+                <Button
+                    Text="Do kasy" />
+            </StackLayout>
+        </Grid>
 
     </ContentPage.Content>
 </ContentPage>

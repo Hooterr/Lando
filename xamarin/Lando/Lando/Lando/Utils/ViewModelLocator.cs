@@ -8,25 +8,19 @@ namespace Lando
 {
     public static class ViewModelLocator
     {
-        public static readonly IReadOnlyDictionary<Type, Type> PageModelMapping;
-
-        static ViewModelLocator()
+        // Page -> ViewModel mapping
+        public static readonly IReadOnlyDictionary<Type, Type> PageModelMapping = new Dictionary<Type, Type>()
         {
-            PageModelMapping = new Dictionary<Type, Type>()
-            {
-                { typeof(LoginWebPage), typeof(LoginWebPageModel) },
-                { typeof(LoginStartPage), typeof(LoginStartPageModel) },
-                { typeof(HomePage), typeof(HomePageModel) },
-                { typeof(BrowsePage), typeof(BrowsePageModel) },
-                { typeof(ProductListPage), typeof(ProductListPageModel) },
-                { typeof(OfferDetailsPage), typeof(OfferDetailsPageModel) },
-                { typeof(CartPage), typeof(CartPageModel) },
-                { typeof(ProfilePage), typeof(ProfilePageModel) },
-                { typeof(LoadingPage), typeof(LoadingPageModel) },
-            };
-
-        }
-
+            { typeof(LoginWebPage), typeof(LoginWebPageModel) },
+            { typeof(LoginStartPage), typeof(LoginStartPageModel) },
+            { typeof(HomePage), typeof(HomePageModel) },
+            { typeof(BrowsePage), typeof(BrowsePageModel) },
+            { typeof(ProductListPage), typeof(ProductListPageModel) },
+            { typeof(OfferDetailsPage), typeof(OfferDetailsPageModel) },
+            { typeof(CartPage), typeof(CartPageModel) },
+            { typeof(ProfilePage), typeof(ProfilePageModel) },
+            { typeof(LoadingPage), typeof(LoadingPageModel) },
+        };
 
         public static readonly BindableProperty AutoWireViewModelProperty = BindableProperty.Create(
             "AutoWireViewModel",
@@ -43,23 +37,22 @@ namespace Lando
 
         private async static void AutoWireViewModelPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            var view = bindable as Element;
-
+            var view = bindable as ContentPage;
             var viewType = view?.GetType();
-            
-
             if (!PageModelMapping.TryGetValue(viewType, out var viewModelType))
             {
                 return;
             }
-            
             var viewModel = (BasePageModel)App.ServiceProvider.GetService(viewModelType);
             if (viewModel == null)
             {
                 return;
             }
-            view.BindingContext = viewModel;
 
+            view.Appearing += (s, e) => viewModel.OnAppeared();
+            view.Disappearing += (s, e) => viewModel.OnDissapeared();
+
+            view.BindingContext = viewModel;
             await viewModel.InitializeAsync();
         }
     }

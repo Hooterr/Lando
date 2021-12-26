@@ -1,10 +1,14 @@
 ﻿using Lando.ApiModels.Offers;
 using Lando.ApiModels.Products;
+using Lando.Database.Models;
+using Lando.Database.Services;
 using Lando.Services;
 using MvvmHelpers.Commands;
 using MvvmHelpers.Interfaces;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -12,43 +16,89 @@ namespace Lando.PageModels
 {
     public class OfferDetailsPageModel : BasePageModel, IQueryAttributable
     {
-        private string offerId;
-        private readonly IApiService apiService;
+        public static object Parameter { get; set; }
+        public IAsyncCommand AddToCartCommand { get; }
 
-        public OfferDetailsPageModel(IApiService apiService)
+        private readonly IApiService apiService;
+        private readonly ICartDbService cart;
+
+        public OfferDetailsPageModel(IApiService apiService, ICartDbService cart)
         {
             this.apiService = apiService;
-
+            this.cart = cart;
+            AddToCartCommand = new AsyncCommand(AddToCartAsync);
         }
 
         public string Title { get; set; }
-        
-        public OfferDetailsResponseModel Offer { get; set; }
+
+        public OfferItemModel Offer { get; set; }
+
+        public UserRatingResponseModel Rating { get; set; }
+
+        public bool RatingVisible => Rating != null;
+
+        public string Quantity { get; set; } = "1";
+
 
         public async void ApplyQueryAttributes(IDictionary<string, string> query)
         {
-            if (query.TryGetValue("offerId", out string offerId))
+            if (query.ContainsKey("offerId"))
             {
-                this.offerId = offerId;
-                await LoadProductsAsync();
+                Offer = Parameter as OfferItemModel;
+                Parameter = null;
             }
+
+            await LoadDetailsAsync();
 
         }
 
-        private async Task LoadProductsAsync()
+        private async Task LoadDetailsAsync()
         {
-            var products = await apiService.GetOfferDetailsAsync(offerId);
-
-            if (products.Success)
+            var response = await apiService.GetUserRating(Offer.Seller.Id);
+            if (response.Failed)
             {
-                Offer = products.Entity;
+                return;
             }
+
+            Rating = response.Entity;
         }
 
+        private async Task AddToCartAsync()
+        {
+            if (!int.TryParse(Quantity, out int qnt))
+            {
+                return;
+            }
+
+            if (qnt < 0 || qnt > Offer.Stock.Available)
+            {
+                // todo message
+                return;
+            }
+
+            var existing = cart.All().FirstOrDefault(x => x.Offer.Id == Offer.Id);
+
+            if (existing == null)
+            {
+                var newEntry = new CartOfferModel()
+                {
+                    Offer = Offer,
+                    Quantity = qnt,
+                };
+                cart.Create(newEntry);
+            }
+            else
+            {
+                existing.Quantity = qnt;
+                cart.Update(existing);
+            }
+
+            MessagingCenter.Send(Application.Current, "CartChanged");
+        }
 
         public override async Task InitializeAsync()
         {
-            Title = "Szczególy produktu";
+            Title = "Szczegóły produktu";
         }
     }
 }

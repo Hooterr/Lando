@@ -20,7 +20,7 @@ namespace Lando.PageModels
         {
             //await Task.Delay(2000); // For dramatic effect
 
-            var success = await sessionManager.ReadFromStorageAsync();
+            var success = await sessionManager.StoredTokenExistsAsync();
             if (success)
             {
                 //await Shell.Current.GoToAsync("//home");

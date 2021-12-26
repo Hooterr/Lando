@@ -108,6 +108,12 @@ namespace Lando.ApiModels.Offers
     {
         [JsonProperty("unit")]
         public string Unit { get; set; }
+        [JsonIgnore]
+        public string UnitText => Unit switch
+        {
+            "UNIT" => "sztuk",
+            _ => "",
+        };
 
         [JsonProperty("available")]
         public int Available { get; set; }
@@ -153,6 +159,9 @@ namespace Lando.ApiModels.Offers
 
         [JsonProperty("images")]
         public List<ImageModel> Images { get; set; }
+
+        [JsonIgnore]
+        public string TitleImageUrl => Images?.FirstOrDefault()?.Url;
 
         [JsonIgnore]
         public string DisplayImage => Images?.FirstOrDefault()?.Url;

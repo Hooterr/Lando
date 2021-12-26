@@ -9,24 +9,20 @@
     x:DataType="models:HomePageModel"
     Shell.NavBarIsVisible="false">
     <ContentPage.Content>
-        <ScrollView>
 
-            <StackLayout>
-                <Label
-                    FontFamily="FA"
-                    Text="{x:Static local:Glyps.Airbnb}" />
-                <Label
-                    Text="Home page" />
-                <Label
-                    FontFamily="FA"
-                    Text="{x:Static local:Glyps.Heart}" />
-                <Label
-                    FontFamily="FA"
-                    Text="{x:Static local:Glyps.Angellist}" />
-                <Label
-                    Text="{Binding JsonContent}" />
-            </StackLayout>
-        </ScrollView>
+        <StackLayout
+            Padding="20"
+            HorizontalOptions="Center"
+            Spacing="20"
+            VerticalOptions="Center">
+            <Label
+                HorizontalTextAlignment="Center"
+                Text="Witaj w aplikacji!" />
+            <Label
+                HorizontalOptions="Center"
+                Text="Sprawdź jakie ciekawe produkty możesz dzisiaj kupić" />
+
+        </StackLayout>
 
     </ContentPage.Content>
 </ContentPage>

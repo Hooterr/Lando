@@ -13,7 +13,7 @@ namespace Lando.Services
         Task<string> GetTokenAsync();
         Task<string> GetRefreshTokenAsync();
         Task SetTokenAsync(AuthenticationTokenResponse token);
-        Task<bool> ReadFromStorageAsync();
+        Task<bool> StoredTokenExistsAsync();
 
         Task<bool> AuthenticateWithoutCredentialsAsync();
         Task<bool> AuthenticateAuthorizationCodeAsync(string code);

@@ -39,6 +39,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <CollectionView
+            IsGrouped="True"
             ItemsSource="{Binding Offers}">
             <CollectionView.Header>
                 <StackLayout>
@@ -49,6 +50,21 @@
                         Text="Usuń filter" />
                 </StackLayout>
             </CollectionView.Header>
+            <CollectionView.GroupHeaderTemplate>
+                <DataTemplate
+                    x:DataType="pagemodels:GroupedProducts">
+                    <StackLayout>
+                        <BoxView
+                            BackgroundColor="{StaticResource PrimaryDark}"
+                            HeightRequest="0.5" />
+                        <Label
+                            Padding="10"
+                            FontFamily="{StaticResource Bold}"
+                            FontSize="18"
+                            Text="{Binding Name}" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.GroupHeaderTemplate>
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout
                     ItemSpacing="10"

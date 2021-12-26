@@ -26,6 +26,11 @@
                 #F56A4D
             </Color>
 
+            <Color
+                x:Key="Yellow">
+                #fac314
+            </Color>
+
             <x:String
                 x:Key="OpenSansRegular">
                 OpenSansRegular

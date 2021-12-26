@@ -15,5 +15,6 @@ namespace Lando.Services
         Task<ApiResonseModel<MeModel>> GetMeAsync();
         Task<ApiResonseModel<OfferDetailsResponseModel>> GetOfferDetailsAsync(string id);
         Task<ApiResonseModel<OffersResponseModel>> GetProductsAsync(Action<GetOffersParameters> action);
+        Task<ApiResonseModel<UserRatingResponseModel>> GetUserRating(string userId);
     }
 }

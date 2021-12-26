@@ -3,11 +3,9 @@
     x:Class="Lando.OfferDetailsPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:apimodels="clr-namespace:Lando.ApiModels"
     xmlns:local="clr-namespace:Lando"
-    xmlns:offers="clr-namespace:Lando.ApiModels.Offers"
+    xmlns:customviews="clr-namespace:Lando.CustomViews"
     xmlns:pagemodels="clr-namespace:Lando.PageModels"
-    xmlns:products="clr-namespace:Lando.ApiModels.Products"
     x:Name="Page"
     Title="{Binding Title}"
     local:ViewModelLocator.AutoWireViewModel="true"
@@ -18,9 +16,99 @@
         <ResourceDictionary />
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid>
-            <Label
-                Text="{Binding Offer.Name}" />
-        </Grid>
+        <ScrollView
+            Padding="10">
+            <StackLayout>
+                <Label
+                    FontFamily="{StaticResource Bold}"
+                    Text="{Binding Offer.Name}" />
+
+                <Image
+                    HeightRequest="300"
+                    Source="{Binding Offer.TitleImageUrl}" />
+
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                Text="od " />
+                            <Span
+                                Text="{Binding Offer.Seller.Login}"
+                                TextDecorations="Underline" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <customviews:RatingView
+                    IsVisible="{Binding RatingVisible}"
+                    Model="{Binding Rating}" />
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                Text="koniec za " />
+                            <Span
+                                Text="{Binding Offer.Publication.EndingAt}"
+                                TextDecorations="Underline" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label
+                    FontFamily="Bold"
+                    FontSize="16">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                Text="{Binding Offer.SellingMode.Price.Amount}" />
+                            <Span
+                                Text=" " />
+                            <Span
+                                Text="{Binding Offer.SellingMode.Price.Currency}" />
+
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <BoxView
+                    BackgroundColor="{StaticResource PrimaryDark}"
+                    HeightRequest="0.5"
+                    Opacity="0.5" />
+
+                <Label
+                    FontFamily="{StaticResource Light}"
+                    Text="Liczba sztuk" />
+                <StackLayout
+                    Orientation="Horizontal">
+
+                    <Entry
+                        HorizontalTextAlignment="Center"
+                        Keyboard="Numeric"
+                        Text="{Binding Quantity}"
+                        WidthRequest="60" />
+
+                    <Label
+                        Text=" z "
+                        VerticalTextAlignment="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    Text=" z " />
+                                <Span
+                                    Text="{Binding Offer.Stock.Available}" />
+                                <Span
+                                    Text=" " />
+                                <Span
+                                    Text="{Binding Offer.Stock.UnitText}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                </StackLayout>
+
+                <Button
+                    Command="{Binding AddToCartCommand}"
+                    Text="Dodaj do koszyka" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

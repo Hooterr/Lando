@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="Lando.CustomViews.RatingView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:customviews="clr-namespace:Lando.CustomViews"
+    xmlns:local="clr-namespace:Lando"
+    x:DataType="customviews:RatingView">
+    <ContentView.Content>
+        <Grid
+            ColumnDefinitions="*,*">
+
+            <StackLayout
+                Grid.Column="0"
+                VerticalOptions="Center">
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                FontFamily="{StaticResource Bold}"
+                                Text="{Binding Model.RecommendedPercentage}" />
+                            <Span
+                                FontFamily="{StaticResource Bold}"
+                                Text="%" />
+                            <Span
+                                Text=" kupujących poleca tego sprzedawcę w ostatnich 12 miesiącach" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <StackLayout
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal">
+                    <Label
+                        FontFamily="FA"
+                        Text="{x:Static local:Glyps.ThumbsUp}"
+                        TextColor="Green" />
+                    <Label
+                        Text="{Binding Model.Recommended.Total}"
+                        TextColor="Green" />
+                    <Label
+                        FontFamily="FA"
+                        Text="{x:Static local:Glyps.ThumbsDown}"
+                        TextColor="{StaticResource Accent}" />
+                    <Label
+                        Text="{Binding Model.NotRecommended.Total}"
+                        TextColor="{StaticResource Accent}" />
+                </StackLayout>
+
+            </StackLayout>
+
+            <StackLayout
+                Grid.Column="1">
+
+                <Label
+                    Text="ZGODNOŚĆ Z OPISEM" />
+                <Label
+                    HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                FontFamily="{StaticResource Bold}"
+                                Text="{Binding Model.AverageRates.Description}" />
+                            <Span
+                                Text="/5" />
+                            <Span
+                                FontFamily="FA"
+                                Text="{x:Static local:Glyps.Star}"
+                                TextColor="{StaticResource Yellow}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label
+                    Text="OBSŁUGA KUPUJĄCEGO" />
+                <Label
+                    HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                FontFamily="{StaticResource Bold}"
+                                Text="{Binding Model.AverageRates.Service}" />
+                            <Span
+                                Text="/5" />
+                            <Span
+                                FontFamily="FA"
+                                Text="{x:Static local:Glyps.Star}"
+                                TextColor="{StaticResource Yellow}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label
+                    Text="KOSZT WYSYŁKI" />
+                <Label
+                    HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                FontFamily="{StaticResource Bold}"
+                                Text="{Binding Model.AverageRates.DeliveryCost}" />
+                            <Span
+                                Text="/5" />
+                            <Span
+                                FontFamily="FA"
+                                Text="{x:Static local:Glyps.Star}"
+                                TextColor="{StaticResource Yellow}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+
+            </StackLayout>
+
+
+
+
+        </Grid>
+    </ContentView.Content>
+</ContentView>

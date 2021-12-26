@@ -55,13 +55,11 @@ namespace Lando.PageModels
                 return;
             }
 
-
             if (!await sessionManager.AuthenticateAuthorizationCodeAsync(code))
             {
                 return;
             }
 
-            // TODO Lovely error handling
             await Shell.Current.GoToAsync("//home");
         }
 

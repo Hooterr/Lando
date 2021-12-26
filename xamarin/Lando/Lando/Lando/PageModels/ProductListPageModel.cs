@@ -3,6 +3,7 @@ using Lando.ApiModels.Products;
 using Lando.Services;
 using MvvmHelpers.Commands;
 using MvvmHelpers.Interfaces;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,15 @@ using Xamarin.Forms;
 
 namespace Lando.PageModels
 {
+    public class GroupedProducts : List<OfferItemModel>
+    {
+        public string Name { get; set; }
+        public GroupedProducts(string name, List<OfferItemModel> items) : base(items)
+        {
+            Name = name;
+        }
+    }
+
     public class ProductListPageModel : BasePageModel, IQueryAttributable
     {
         private string categoryId;
@@ -30,7 +40,7 @@ namespace Lando.PageModels
         public string SearchText { get; set; }
         public string CurrentCategory { get; set; }
         public bool IsCategoryFilterVisible => !string.IsNullOrEmpty(categoryId);
-        public List<OfferItemModel> Offers { get; set; }
+        public List<GroupedProducts> Offers { get; set; }
         public IAsyncCommand<OfferItemModel> ItemSelectedCommand { get; }
         public IAsyncCommand SearchCommand { get; }
         public ICommand RemoveCategoryFilterCommand { get; }
@@ -55,7 +65,19 @@ namespace Lando.PageModels
             if (products.Success)
             {
                 CurrentCategory = products.Entity.Categories.Path.LastOrDefault()?.Name;
-                Offers = products.Entity.Items.Regular;
+                var offers = new List<GroupedProducts>();
+
+                if (products.Entity.Items.Promoted?.Any() ?? false)
+                {
+                    offers.Add(new GroupedProducts("Oferty promowane", products.Entity.Items.Promoted));
+                }
+
+                if (products.Entity.Items.Regular?.Any() ?? false)
+                {
+                    offers.Add(new GroupedProducts("Oferty", products.Entity.Items.Regular));
+                }
+
+                Offers = offers;
             }
         }
 
@@ -66,6 +88,7 @@ namespace Lando.PageModels
 
         private async Task ItemSelectedAsync(OfferItemModel item)
         {
+            OfferDetailsPageModel.Parameter = item;
             await Shell.Current.GoToAsync($"/offerdetails?offerId={item.Id}");
         }
 

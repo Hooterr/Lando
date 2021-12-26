@@ -1,9 +1,7 @@
-﻿using Lando.ApiModels;
-using Lando.ApiModels.Authentication;
+﻿using Lando.ApiModels.Authentication;
 using Lando.Async;
 using Newtonsoft.Json;
 using System;
-using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -19,7 +17,7 @@ namespace Lando.Services
         private string _refreshToken;
         private readonly IAuthenticationService _authService;
         private DateTime _validTo;
-        
+
         public SessionManager(IAuthenticationService authService)
         {
             _authService = authService;
@@ -49,16 +47,16 @@ namespace Lando.Services
             });
         }
 
-        public Task SetTokenAsync(AuthenticationTokenResponse token)
-        {
-            return AsyncAwaiter.AwaitAsync(nameof(SessionManager), async () =>
-            {
-                SetTokenInternal(token);
-                await SaveTokenToStorageAsync(token);
-            });
-        }
+public Task SetTokenAsync(AuthenticationTokenResponse token)
+{
+    return AsyncAwaiter.AwaitAsync(nameof(SessionManager), async () =>
+    {
+        SetTokenInternal(token);
+        await SaveTokenToStorageAsync(token);
+    });
+}
 
-        public Task<bool> ReadFromStorageAsync()
+        public Task<bool> StoredTokenExistsAsync()
         {
             return AsyncAwaiter.AwaitResultAsync(nameof(SessionManager), async () =>
             {
@@ -70,8 +68,8 @@ namespace Lando.Services
 
                 var tokenObject = JsonConvert.DeserializeObject<AuthenticationTokenResponse>(storedToken);
                 if (tokenObject == null)
-                { 
-                    return false; 
+                {
+                    return false;
                 }
 
                 SetTokenInternal(tokenObject);
@@ -89,7 +87,7 @@ namespace Lando.Services
 
         }
 
-        private void SetTokenInternal(AuthenticationTokenResponse token) 
+        private void SetTokenInternal(AuthenticationTokenResponse token)
         {
             var handler = new JwtSecurityTokenHandler();
             var jwtToken = handler.ReadJwtToken(token.AccessToken);
@@ -117,8 +115,6 @@ namespace Lando.Services
             else
             {
                 MessagingCenter.Send(Application.Current, "RefreshTokenFailed");
-
-                // To live is to suffer
                 return false;
             }
         }

@@ -67,5 +67,10 @@ namespace Lando.Services
         {
             return await GetAsync<OfferDetailsResponseModel>($"sale/offers/{id}");
         }
+
+        public async Task<ApiResonseModel<UserRatingResponseModel>> GetUserRating(string userId)
+        {
+            return await GetAsync<UserRatingResponseModel>($"users/{userId}/ratings-summary");
+        }
     }
 }

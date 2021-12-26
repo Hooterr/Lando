@@ -21,5 +21,14 @@ namespace Lando.PageModels
         {
             return Task.CompletedTask;
         }
+
+        public virtual Task OnAppeared()
+        {
+            return Task.CompletedTask;
+        }
+        public virtual Task OnDissapeared()
+        {
+            return Task.CompletedTask;
+        }
     }
 }

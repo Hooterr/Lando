@@ -1,4 +1,5 @@
-﻿using Lando.PageModels;
+﻿using Lando.Database.Services;
+using Lando.PageModels;
 using Lando.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -15,10 +16,17 @@ namespace Lando
         public const string ClientId = "b73814aa969745c99e28fbb75edc99bb";
         public const string ClientSecretent = "tUvQlk3jWQiwapPcrzsnNFPnmEseuUHPRMjPZKQTDJLnrC2ApjcfvlsnIVbgkN2W";
 
+        public static IServiceProvider Create()
+        {
+            return new ServiceCollection()
+                .ConfigureServices()
+                .BuildServiceProvider();
+        }
+
         public static IServiceCollection ConfigureServices(this IServiceCollection services)
         {
             services
-                .AddTransient<BrowsePageModel>()
+                .AddSingleton<BrowsePageModel>()
                 .AddTransient<HomePageModel>()
                 .AddTransient<CartPageModel>()
                 .AddTransient<ProfilePageModel>()
@@ -29,13 +37,13 @@ namespace Lando
                 .AddTransient<LoadingPageModel>()
                 .AddSingleton<IApiService, ApiService>()
                 .AddSingleton<ISessionManager, SessionManager>()
-                .AddScoped<IAuthenticationService, AuthenticationService>()
+                .AddSingleton<ICartDbService, CartDbService>()
+                .AddSingleton<IAuthenticationService, AuthenticationService>()
                 .AddHttpClient("client_credentials", opt =>
                 {
                     opt.BaseAddress = new Uri("https://allegro.pl.allegrosandbox.pl");
                     opt.DefaultRequestHeaders.Authorization
                         = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes($"{ClientId}:{ClientSecretent}")));
-
                 });
             services.AddHttpClient("api", opt =>
                 {

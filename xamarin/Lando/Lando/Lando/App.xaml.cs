@@ -13,9 +13,7 @@ namespace Lando
         public App()
         {
             InitializeComponent();
-            ServiceProvider = new ServiceCollection()
-                .ConfigureServices()
-                .BuildServiceProvider();
+            ServiceProvider = DependencyInjectionContainer.Create();
 
             MainPage = new AppShell();
         }

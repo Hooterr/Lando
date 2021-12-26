@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "ZhIjKDjkfRdSIruf+mOTz976vsjOyPmq2n71cHeVwZ6d1oZ27N0eXqh4SILi2Jr4n2T7NL6G+lIsYSoiaFYxhg==",
+  "dgSpecHash": "jzjFnNxDf72Ol6wwxFe/OBlnl1Y95H3IzQL32vdrRmt0XwZaiH8tO8igoK+On1nKEcrkdSZ/UOVyd7+RBFg7EA==",
   "success": true,
   "projectFilePath": "C:\\Users\\root\\source\\repos\\Lando\\xamarin\\Lando\\Lando\\Lando.iOS\\Lando.iOS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\root\\.nuget\\packages\\fody\\6.5.1\\fody.6.5.1.nupkg.sha512",
+    "C:\\Users\\root\\.nuget\\packages\\litedb\\5.0.11\\litedb.5.0.11.nupkg.sha512",
     "C:\\Users\\root\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\root\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\6.0.0\\microsoft.extensions.dependencyinjection.6.0.0.nupkg.sha512",
     "C:\\Users\\root\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
