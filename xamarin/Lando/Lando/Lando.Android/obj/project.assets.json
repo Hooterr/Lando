@@ -17,6 +17,45 @@
           "lib/netstandard2.0/LiteDB.dll": {}
         }
       },
+      "Microsoft.AppCenter/4.4.0": {
+        "type": "package",
+        "compile": {
+          "lib/MonoAndroid50/Microsoft.AppCenter.Android.Bindings.dll": {},
+          "lib/MonoAndroid50/Microsoft.AppCenter.dll": {}
+        },
+        "runtime": {
+          "lib/MonoAndroid50/Microsoft.AppCenter.Android.Bindings.dll": {},
+          "lib/MonoAndroid50/Microsoft.AppCenter.dll": {}
+        }
+      },
+      "Microsoft.AppCenter.Analytics/4.4.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AppCenter": "4.4.0"
+        },
+        "compile": {
+          "lib/MonoAndroid50/Microsoft.AppCenter.Analytics.Android.Bindings.dll": {},
+          "lib/MonoAndroid50/Microsoft.AppCenter.Analytics.dll": {}
+        },
+        "runtime": {
+          "lib/MonoAndroid50/Microsoft.AppCenter.Analytics.Android.Bindings.dll": {},
+          "lib/MonoAndroid50/Microsoft.AppCenter.Analytics.dll": {}
+        }
+      },
+      "Microsoft.AppCenter.Crashes/4.4.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AppCenter": "4.4.0"
+        },
+        "compile": {
+          "lib/MonoAndroid50/Microsoft.AppCenter.Crashes.Android.Bindings.dll": {},
+          "lib/MonoAndroid50/Microsoft.AppCenter.Crashes.dll": {}
+        },
+        "runtime": {
+          "lib/MonoAndroid50/Microsoft.AppCenter.Crashes.Android.Bindings.dll": {},
+          "lib/MonoAndroid50/Microsoft.AppCenter.Crashes.dll": {}
+        }
+      },
       "Microsoft.CSharp/4.5.0": {
         "type": "package",
         "frameworkAssemblies": [
@@ -1280,6 +1319,8 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "LiteDB": "5.0.11",
+          "Microsoft.AppCenter.Analytics": "4.4.0",
+          "Microsoft.AppCenter.Crashes": "4.4.0",
           "Microsoft.Extensions.Http": "6.0.0",
           "Newtonsoft.Json": "13.0.1",
           "PropertyChanged.Fody": "3.4.0",
@@ -1351,6 +1392,93 @@
         "lib/netstandard2.0/LiteDB.xml",
         "litedb.5.0.11.nupkg.sha512",
         "litedb.nuspec"
+      ]
+    },
+    "Microsoft.AppCenter/4.4.0": {
+      "sha512": "FUyb8E8XvphlDkpZqNpRCZEcC8XSuIC6rzraMNyN2463oiUd36UJBI9JB8jN+ryEEnrUt/ryR2iqPPKTiECvXw==",
+      "type": "package",
+      "path": "microsoft.appcenter/4.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid50/Microsoft.AppCenter.Android.Bindings.dll",
+        "lib/MonoAndroid50/Microsoft.AppCenter.dll",
+        "lib/MonoAndroid50/Microsoft.AppCenter.xml",
+        "lib/Xamarin.iOS10/Microsoft.AppCenter.dll",
+        "lib/Xamarin.iOS10/Microsoft.AppCenter.iOS.Bindings.dll",
+        "lib/Xamarin.iOS10/Microsoft.AppCenter.xml",
+        "lib/net461/Microsoft.AppCenter.dll",
+        "lib/net461/Microsoft.AppCenter.xml",
+        "lib/net5.0-windows10.0.17763.0/Microsoft.AppCenter.dll",
+        "lib/net5.0-windows10.0.17763.0/Microsoft.AppCenter.xml",
+        "lib/net5.0-windows7.0/Microsoft.AppCenter.dll",
+        "lib/net5.0-windows7.0/Microsoft.AppCenter.xml",
+        "lib/netcoreapp3.0/Microsoft.AppCenter.dll",
+        "lib/netcoreapp3.0/Microsoft.AppCenter.xml",
+        "lib/netstandard1.0/Microsoft.AppCenter.dll",
+        "lib/netstandard1.0/Microsoft.AppCenter.xml",
+        "lib/uap10.0/Microsoft.AppCenter.dll",
+        "lib/uap10.0/Microsoft.AppCenter.xml",
+        "microsoft.appcenter.4.4.0.nupkg.sha512",
+        "microsoft.appcenter.nuspec"
+      ]
+    },
+    "Microsoft.AppCenter.Analytics/4.4.0": {
+      "sha512": "Z0ejt02TwbtHaRpMzyk8KQLEzQAMB6X3EOWE4gCszDn2xgBUbic7DiT1gV8cLz4jQUZQR5FbKhzGaq7UoCoc1g==",
+      "type": "package",
+      "path": "microsoft.appcenter.analytics/4.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid50/Microsoft.AppCenter.Analytics.Android.Bindings.dll",
+        "lib/MonoAndroid50/Microsoft.AppCenter.Analytics.dll",
+        "lib/MonoAndroid50/Microsoft.AppCenter.Analytics.xml",
+        "lib/Xamarin.iOS10/Microsoft.AppCenter.Analytics.dll",
+        "lib/Xamarin.iOS10/Microsoft.AppCenter.Analytics.iOS.Bindings.dll",
+        "lib/Xamarin.iOS10/Microsoft.AppCenter.Analytics.xml",
+        "lib/net461/Microsoft.AppCenter.Analytics.dll",
+        "lib/net461/Microsoft.AppCenter.Analytics.xml",
+        "lib/net5.0-windows10.0.17763.0/Microsoft.AppCenter.Analytics.dll",
+        "lib/net5.0-windows10.0.17763.0/Microsoft.AppCenter.Analytics.xml",
+        "lib/net5.0-windows7.0/Microsoft.AppCenter.Analytics.dll",
+        "lib/net5.0-windows7.0/Microsoft.AppCenter.Analytics.xml",
+        "lib/netcoreapp3.0/Microsoft.AppCenter.Analytics.dll",
+        "lib/netcoreapp3.0/Microsoft.AppCenter.Analytics.xml",
+        "lib/netstandard1.0/Microsoft.AppCenter.Analytics.dll",
+        "lib/netstandard1.0/Microsoft.AppCenter.Analytics.xml",
+        "lib/uap10.0/Microsoft.AppCenter.Analytics.dll",
+        "lib/uap10.0/Microsoft.AppCenter.Analytics.xml",
+        "microsoft.appcenter.analytics.4.4.0.nupkg.sha512",
+        "microsoft.appcenter.analytics.nuspec"
+      ]
+    },
+    "Microsoft.AppCenter.Crashes/4.4.0": {
+      "sha512": "4Gn+Z5jeAJKBpmfWy8Lg1Bh/HdKF0UbGvVJdjKMJOBDhpsroCzjYBxRvQnkcs10Y3rD8iZMGtXnFFLfvhDl7Ag==",
+      "type": "package",
+      "path": "microsoft.appcenter.crashes/4.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid50/Microsoft.AppCenter.Crashes.Android.Bindings.dll",
+        "lib/MonoAndroid50/Microsoft.AppCenter.Crashes.dll",
+        "lib/MonoAndroid50/Microsoft.AppCenter.Crashes.xml",
+        "lib/Xamarin.iOS10/Microsoft.AppCenter.Crashes.dll",
+        "lib/Xamarin.iOS10/Microsoft.AppCenter.Crashes.iOS.Bindings.dll",
+        "lib/Xamarin.iOS10/Microsoft.AppCenter.Crashes.xml",
+        "lib/net461/Microsoft.AppCenter.Crashes.dll",
+        "lib/net461/Microsoft.AppCenter.Crashes.xml",
+        "lib/net5.0-windows10.0.17763.0/Microsoft.AppCenter.Crashes.dll",
+        "lib/net5.0-windows10.0.17763.0/Microsoft.AppCenter.Crashes.xml",
+        "lib/net5.0-windows7.0/Microsoft.AppCenter.Crashes.dll",
+        "lib/net5.0-windows7.0/Microsoft.AppCenter.Crashes.xml",
+        "lib/netcoreapp3.0/Microsoft.AppCenter.Crashes.dll",
+        "lib/netcoreapp3.0/Microsoft.AppCenter.Crashes.xml",
+        "lib/netstandard1.0/Microsoft.AppCenter.Crashes.dll",
+        "lib/netstandard1.0/Microsoft.AppCenter.Crashes.xml",
+        "lib/uap10.0/Microsoft.AppCenter.Crashes.dll",
+        "lib/uap10.0/Microsoft.AppCenter.Crashes.xml",
+        "microsoft.appcenter.crashes.4.4.0.nupkg.sha512",
+        "microsoft.appcenter.crashes.nuspec"
       ]
     },
     "Microsoft.CSharp/4.5.0": {
@@ -3174,6 +3302,8 @@
   "projectFileDependencyGroups": {
     "MonoAndroid,Version=v11.0": [
       "Lando >= 1.0.0",
+      "Microsoft.AppCenter.Analytics >= 4.4.0",
+      "Microsoft.AppCenter.Crashes >= 4.4.0",
       "Xamarin.Essentials >= 1.6.1",
       "Xamarin.Forms >= 5.0.0.2012"
     ]
@@ -3223,6 +3353,14 @@
     "frameworks": {
       "monoandroid11.0": {
         "dependencies": {
+          "Microsoft.AppCenter.Analytics": {
+            "target": "Package",
+            "version": "[4.4.0, )"
+          },
+          "Microsoft.AppCenter.Crashes": {
+            "target": "Package",
+            "version": "[4.4.0, )"
+          },
           "Xamarin.Essentials": {
             "target": "Package",
             "version": "[1.6.1, )"

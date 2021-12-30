@@ -44,6 +44,14 @@
       "frameworks": {
         "xamarinios10": {
           "dependencies": {
+            "Microsoft.AppCenter.Analytics": {
+              "target": "Package",
+              "version": "[4.4.0, )"
+            },
+            "Microsoft.AppCenter.Crashes": {
+              "target": "Package",
+              "version": "[4.4.0, )"
+            },
             "Xamarin.Essentials": {
               "target": "Package",
               "version": "[1.6.1, )"
@@ -113,6 +121,14 @@
             "LiteDB": {
               "target": "Package",
               "version": "[5.0.11, )"
+            },
+            "Microsoft.AppCenter.Analytics": {
+              "target": "Package",
+              "version": "[4.4.0, )"
+            },
+            "Microsoft.AppCenter.Crashes": {
+              "target": "Package",
+              "version": "[4.4.0, )"
             },
             "Microsoft.Extensions.Http": {
               "target": "Package",

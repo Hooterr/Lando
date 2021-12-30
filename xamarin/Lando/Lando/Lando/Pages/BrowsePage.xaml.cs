@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using Microsoft.AppCenter.Analytics;
+using Xamarin.Forms;
 
 namespace Lando
 {
@@ -7,6 +8,11 @@ namespace Lando
         public BrowsePage()
         {
             InitializeComponent();
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            Analytics.TrackEvent("CategoriesPageOpened");
         }
     }
 }

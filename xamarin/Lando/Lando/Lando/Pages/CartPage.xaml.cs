@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using Microsoft.AppCenter.Analytics;
+using Xamarin.Forms;
 
 namespace Lando
 {
@@ -7,6 +8,12 @@ namespace Lando
         public CartPage()
         {
             InitializeComponent();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            Analytics.TrackEvent("CartPageOpened");
         }
     }
 }

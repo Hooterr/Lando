@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "jzjFnNxDf72Ol6wwxFe/OBlnl1Y95H3IzQL32vdrRmt0XwZaiH8tO8igoK+On1nKEcrkdSZ/UOVyd7+RBFg7EA==",
+  "dgSpecHash": "16S+lXZJUQqFtrtKjORRc4TFtYDyzVKVBasU9HEQ48yAiaf8wSYBDCH/vrvTq5OCsN6T+ZjG0FjYeVMXCWsWJA==",
   "success": true,
   "projectFilePath": "C:\\Users\\root\\source\\repos\\Lando\\xamarin\\Lando\\Lando\\Lando.iOS\\Lando.iOS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\root\\.nuget\\packages\\fody\\6.5.1\\fody.6.5.1.nupkg.sha512",
     "C:\\Users\\root\\.nuget\\packages\\litedb\\5.0.11\\litedb.5.0.11.nupkg.sha512",
+    "C:\\Users\\root\\.nuget\\packages\\microsoft.appcenter\\4.4.0\\microsoft.appcenter.4.4.0.nupkg.sha512",
+    "C:\\Users\\root\\.nuget\\packages\\microsoft.appcenter.analytics\\4.4.0\\microsoft.appcenter.analytics.4.4.0.nupkg.sha512",
+    "C:\\Users\\root\\.nuget\\packages\\microsoft.appcenter.crashes\\4.4.0\\microsoft.appcenter.crashes.4.4.0.nupkg.sha512",
     "C:\\Users\\root\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\root\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\6.0.0\\microsoft.extensions.dependencyinjection.6.0.0.nupkg.sha512",
     "C:\\Users\\root\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
