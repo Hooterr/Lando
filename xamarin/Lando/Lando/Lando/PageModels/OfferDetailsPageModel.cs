@@ -94,6 +94,8 @@ namespace Lando.PageModels
             }
 
             MessagingCenter.Send(Application.Current, "CartChanged");
+
+            await Shell.Current.GoToAsync("../");
         }
 
         public override async Task InitializeAsync()

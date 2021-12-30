@@ -164,7 +164,7 @@ namespace Lando.ApiModels.Offers
         public string TitleImageUrl => Images?.FirstOrDefault()?.Url;
 
         [JsonIgnore]
-        public string DisplayImage => Images?.FirstOrDefault()?.Url;
+        public string DisplayImage => Images?.FirstOrDefault()?.Url ?? "https://www.entspecialistspc.com/wp-content/uploads/2018/12/no-image.jpg";
 
         [JsonProperty("sellingMode")]
         public SellingMode SellingMode { get; set; }

@@ -1,5 +1,6 @@
 ﻿using Lando.ApiModels;
 using Lando.ApiModels.Offers;
+using Lando.ApiModels.Profile;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -71,6 +72,21 @@ namespace Lando.Services
         public async Task<ApiResonseModel<UserRatingResponseModel>> GetUserRating(string userId)
         {
             return await GetAsync<UserRatingResponseModel>($"users/{userId}/ratings-summary");
+        }
+
+        public async Task<ApiResonseModel<ContactResponseModel>> GetContactsAsync()
+        {
+            return await GetAsync<ContactResponseModel>("sale/offer-contacts");
+        }
+
+        public async Task<ApiResonseModel<ApiModels.Profile.Contact>> AddContactAsync(ApiModels.Profile.Contact contact)
+        {
+            return await PostAsync("sale/offer-contacts", contact);
+        }
+
+        public async Task<ApiResonseModel<ApiModels.Profile.Contact>> ChangeContactAsync(ApiModels.Profile.Contact contact)
+        {
+            return await PutAsync($"sale/offer-contacts/{contact.Id}", contact);
         }
     }
 }

@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Lando.Services
@@ -46,6 +47,64 @@ namespace Lando.Services
                 Success = false
             };
         }
+
+        protected async Task<ApiResonseModel<T>> PostAsync<T>(string url, T entity)
+        {
+            var token = await sessionManager.GetTokenAsync();
+            http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            var content = new StringContent(JsonConvert.SerializeObject(entity), Encoding.UTF8, "application/vnd.allegro.public.v1+json");
+            var response = await http.PostAsync(url, content);
+            if (response.IsSuccessStatusCode)
+            {
+                var contentString = await response.Content.ReadAsStringAsync();
+
+                await LogRequestAsync(response);
+                var responseEntity = JsonConvert.DeserializeObject<T>(contentString);
+
+                return new ApiResonseModel<T>
+                {
+                    Success = true,
+                    Entity = responseEntity
+                };
+            }
+
+            await LogRequestAsync(response);
+
+            return new ApiResonseModel<T>
+            {
+                Success = false
+            };
+        }
+        protected async Task<ApiResonseModel<T>> PutAsync<T>(string url, T entity)
+        {
+            var token = await sessionManager.GetTokenAsync();
+            http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            var content = new StringContent(JsonConvert.SerializeObject(entity), Encoding.UTF8, "application/vnd.allegro.public.v1+json");
+            var response = await http.PutAsync(url, content);
+            if (response.IsSuccessStatusCode)
+            {
+                var contentString = await response.Content.ReadAsStringAsync();
+
+                await LogRequestAsync(response);
+                var responseEntity = JsonConvert.DeserializeObject<T>(contentString);
+
+                return new ApiResonseModel<T>
+                {
+                    Success = true,
+                    Entity = responseEntity
+                };
+            }
+
+            await LogRequestAsync(response);
+
+            return new ApiResonseModel<T>
+            {
+                Success = false
+            };
+        }
+
 
         private async Task LogRequestAsync(HttpResponseMessage response)
         {

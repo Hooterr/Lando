@@ -20,6 +20,7 @@ namespace Lando
             { typeof(CartPage), typeof(CartPageModel) },
             { typeof(ProfilePage), typeof(ProfilePageModel) },
             { typeof(LoadingPage), typeof(LoadingPageModel) },
+            { typeof(ProfileEditContactPage), typeof(ProfileEditContactPageModel) },
         };
 
         public static readonly BindableProperty AutoWireViewModelProperty = BindableProperty.Create(

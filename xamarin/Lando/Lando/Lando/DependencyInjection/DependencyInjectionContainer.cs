@@ -35,6 +35,7 @@ namespace Lando
                 .AddTransient<ProductListPageModel>()
                 .AddTransient<OfferDetailsPageModel>()
                 .AddTransient<LoadingPageModel>()
+                .AddTransient<ProfileEditContactPageModel>()
                 .AddSingleton<IApiService, ApiService>()
                 .AddSingleton<ISessionManager, SessionManager>()
                 .AddSingleton<ICartDbService, CartDbService>()

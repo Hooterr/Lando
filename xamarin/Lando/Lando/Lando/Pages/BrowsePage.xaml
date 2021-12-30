@@ -22,7 +22,7 @@
             <CollectionView.Header>
                 <StackLayout>
 
-                    <Frame
+                    <!--<Frame
                         Padding="10"
                         BackgroundColor="{StaticResource Accent}">
                         <Label
@@ -33,7 +33,7 @@
                             <TapGestureRecognizer
                                 Command="{Binding GoToSearchCommand}" />
                         </Frame.GestureRecognizers>
-                    </Frame>
+                    </Frame>-->
 
 
                     <Frame

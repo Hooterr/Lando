@@ -5,24 +5,175 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Lando"
     xmlns:models="clr-namespace:Lando.PageModels"
+    xmlns:offers="clr-namespace:Lando.ApiModels.Offers"
+    xmlns:utils="clr-namespace:Lando.Utils"
+    x:Name="Page"
     local:ViewModelLocator.AutoWireViewModel="true"
     x:DataType="models:HomePageModel"
     Shell.NavBarIsVisible="false">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <utils:PolishPluralConverter
+                x:Key="ProductPolishConverter"
+                PluralGenitive="produktów"
+                PluralNominative="produkty"
+                SingularNominative="produkt" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
+        <RefreshView
+            Command="{Binding RefreshCommand}"
+            IsRefreshing="{Binding IsRefreshing}">
+            <Grid
+                RowDefinitions="*,55,200,50">
+                <StackLayout
+                    Grid.Row="0"
+                    Padding="20"
+                    HorizontalOptions="Center"
+                    Spacing="20"
+                    VerticalOptions="Center">
+                    <Label
+                        HorizontalTextAlignment="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    Text="Witaj " />
+                                <Span
+                                    Text="{Binding Name}"
+                                    TextColor="{StaticResource Accent}" />
+                                <Span
+                                    Text="!" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="Sprawdź jakie ciekawe produkty możesz dzisiaj kupić" />
+                    <Button
+                        Command="{Binding GoToOffersCommand}"
+                        Text="Zobacz teraz!" />
 
-        <StackLayout
-            Padding="20"
-            HorizontalOptions="Center"
-            Spacing="20"
-            VerticalOptions="Center">
-            <Label
-                HorizontalTextAlignment="Center"
-                Text="Witaj w aplikacji!" />
-            <Label
-                HorizontalOptions="Center"
-                Text="Sprawdź jakie ciekawe produkty możesz dzisiaj kupić" />
+                    <Label
+                        Margin="0,25,0,0"
+                        HorizontalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    Text="W " />
+                                <Span
+                                    Text="koszyku"
+                                    TextDecorations="Underline">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding GoToCartCommand}" />
+                                    </Span.GestureRecognizers>
+                                </Span>
+                                <Span
+                                    Text=" " />
+                                <Span
+                                    Text="{Binding WaitingPolishPlurar}" />
+                                <Span
+                                    Text=" na Ciebie " />
+                                <Span
+                                    FontFamily="Bold"
+                                    Text="{Binding CartCount}"
+                                    TextColor="{StaticResource Accent}" />
+                                <Span
+                                    Text=" " />
 
-        </StackLayout>
+                                <Span
+                                    Text="{Binding CartCount, Converter={StaticResource ProductPolishConverter}}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
 
+                    <Label
+                        HorizontalTextAlignment="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    Text="o wartości " />
+                                <Span
+                                    FontFamily="Bold"
+                                    Text="{Binding CartValue, StringFormat='{0:n2}'}"
+                                    TextColor="{StaticResource Accent}" />
+                                <Span
+                                    FontFamily="Bold"
+                                    Text=" zł"
+                                    TextColor="{StaticResource Accent}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                </StackLayout>
+
+
+                <Label
+                    Grid.Row="1"
+                    Padding="10,0"
+                    VerticalTextAlignment="End">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                Text="Wybrane dla Ciebie z kategorii " />
+                            <Span
+                                Text="{Binding FeaturedCategoryName}"
+                                TextColor="{StaticResource Accent}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <CollectionView
+                    Grid.Row="2"
+                    Margin="10,0"
+                    ItemsSource="{Binding FeaturedOffers}"
+                    VerticalOptions="FillAndExpand">
+
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout
+                            ItemSpacing="20"
+                            Orientation="Horizontal" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate
+                            x:DataType="offers:OfferItemModel">
+                            <Frame>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding BindingContext.FeaturedItemSelectedCommand, Source={x:Reference Page}}"
+                                        CommandParameter="{Binding}" />
+                                </Frame.GestureRecognizers>
+                                <Grid
+                                    BackgroundColor="White"
+                                    RowDefinitions="75,30,*"
+                                    RowSpacing="10"
+                                    WidthRequest="125">
+                                    <Image
+                                        Grid.Row="0"
+                                        Source="{Binding DisplayImage}" />
+                                    <Label
+                                        Grid.Row="1"
+                                        FontFamily="Bold">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span
+                                                    Text="{Binding SellingMode.Price.Amount, StringFormat='{0:n2}'}" />
+                                                <Span
+                                                    Text=" zł" />
+
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label
+                                        Grid.Row="2"
+                                        MaxLines="2"
+                                        Text="{Binding Name}" />
+                                </Grid>
+                            </Frame>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </RefreshView>
     </ContentPage.Content>
 </ContentPage>

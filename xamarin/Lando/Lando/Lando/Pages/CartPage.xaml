@@ -12,6 +12,7 @@
     Shell.NavBarIsVisible="false">
     <ContentPage.Content>
         <Grid
+            Padding="10"
             RowDefinitions="*,Auto">
             <CollectionView
                 ItemsSource="{Binding Cart}">
@@ -25,8 +26,10 @@
                         x:DataType="models:CartOfferModel">
                         <Grid
                             Padding="10"
+                            BackgroundColor="white"
                             ColumnDefinitions="100,*"
-                            RowDefinitions="60,30,20">
+                            HorizontalOptions="FillAndExpand"
+                            RowDefinitions="60,20,30">
                             <Image
                                 Grid.Column="0"
                                 Aspect="AspectFit"
@@ -37,7 +40,7 @@
                                 VerticalTextAlignment="Center" />
 
                             <Grid
-                                Grid.Row="1"
+                                Grid.Row="2"
                                 Grid.Column="0"
                                 Grid.ColumnSpan="2"
                                 ColumnDefinitions="40,50,40">
@@ -88,12 +91,13 @@
                             </Grid>
 
                             <StackLayout
+                                Grid.Row="1"
                                 Grid.RowSpan="2"
                                 Grid.Column="1"
-                                HorizontalOptions="End"
-                                VerticalOptions="End">
+                                HorizontalOptions="End">
                                 <Label
-                                    HorizontalTextAlignment="End">
+                                    VerticalOptions="EndAndExpand"
+                                    VerticalTextAlignment="End">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span
@@ -129,9 +133,11 @@
                 <StackLayout
                     Orientation="Horizontal">
                     <Label
+                        FontSize="16"
                         Text="do zapłaty" />
                     <Label
                         FontFamily="{StaticResource Bold}"
+                        FontSize="16"
                         Text="9999">
                         <Label.FormattedText>
                             <FormattedString>
