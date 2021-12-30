@@ -20,5 +20,6 @@
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)xamarin.forms\5.0.0.2244\buildTransitive\Xamarin.Forms.props" Condition="Exists('$(NuGetPackageRoot)xamarin.forms\5.0.0.2244\buildTransitive\Xamarin.Forms.props')" />
     <Import Project="$(NuGetPackageRoot)propertychanged.fody\3.4.0\build\PropertyChanged.Fody.props" Condition="Exists('$(NuGetPackageRoot)propertychanged.fody\3.4.0\build\PropertyChanged.Fody.props')" />
+    <Import Project="$(NuGetPackageRoot)mobile.buildtools\2.0.245\buildTransitive\Mobile.BuildTools.props" Condition="Exists('$(NuGetPackageRoot)mobile.buildtools\2.0.245\buildTransitive\Mobile.BuildTools.props')" />
   </ImportGroup>
 </Project>

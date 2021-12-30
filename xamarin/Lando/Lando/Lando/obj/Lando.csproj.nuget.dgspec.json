@@ -63,6 +63,10 @@
               "target": "Package",
               "version": "[6.0.0, )"
             },
+            "Mobile.BuildTools": {
+              "target": "Package",
+              "version": "[2.0.245, )"
+            },
             "NETStandard.Library": {
               "suppressParent": "All",
               "target": "Package",

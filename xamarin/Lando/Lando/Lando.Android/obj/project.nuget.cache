@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "x8eiWuHllKlFvyBJIOx/BdLDwsuGL8DSBozvdOv3Yys8woqtGLXJpOm6VNztjzaquASZ0JW1yUGvN0BCwnlAFw==",
+  "dgSpecHash": "8MqKZ6NwFfC4TOieReypJhA4i5v1jCfjONXvj7t63+jZ77pwwpuTwPBDJxnVfzlU2uUEyyacL850am37JxukLA==",
   "success": true,
   "projectFilePath": "C:\\Users\\root\\source\\repos\\Lando\\xamarin\\Lando\\Lando\\Lando.Android\\Lando.Android.csproj",
   "expectedPackageFiles": [
@@ -20,6 +20,7 @@
     "C:\\Users\\root\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\6.14.1\\microsoft.identitymodel.jsonwebtokens.6.14.1.nupkg.sha512",
     "C:\\Users\\root\\.nuget\\packages\\microsoft.identitymodel.logging\\6.14.1\\microsoft.identitymodel.logging.6.14.1.nupkg.sha512",
     "C:\\Users\\root\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.14.1\\microsoft.identitymodel.tokens.6.14.1.nupkg.sha512",
+    "C:\\Users\\root\\.nuget\\packages\\mobile.buildtools\\2.0.245\\mobile.buildtools.2.0.245.nupkg.sha512",
     "C:\\Users\\root\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\root\\.nuget\\packages\\propertychanged.fody\\3.4.0\\propertychanged.fody.3.4.0.nupkg.sha512",
     "C:\\Users\\root\\.nuget\\packages\\refractored.mvvmhelpers\\1.6.2\\refractored.mvvmhelpers.1.6.2.nupkg.sha512",

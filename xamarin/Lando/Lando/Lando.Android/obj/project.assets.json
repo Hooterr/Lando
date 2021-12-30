@@ -198,6 +198,13 @@
           "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll": {}
         }
       },
+      "Mobile.BuildTools/2.0.245": {
+        "type": "package",
+        "build": {
+          "buildTransitive/Mobile.BuildTools.props": {},
+          "buildTransitive/Mobile.BuildTools.targets": {}
+        }
+      },
       "Newtonsoft.Json/13.0.1": {
         "type": "package",
         "compile": {
@@ -1322,6 +1329,7 @@
           "Microsoft.AppCenter.Analytics": "4.4.0",
           "Microsoft.AppCenter.Crashes": "4.4.0",
           "Microsoft.Extensions.Http": "6.0.0",
+          "Mobile.BuildTools": "2.0.245",
           "Newtonsoft.Json": "13.0.1",
           "PropertyChanged.Fody": "3.4.0",
           "Refractored.MvvmHelpers": "1.6.2",
@@ -1792,6 +1800,75 @@
         "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.xml",
         "microsoft.identitymodel.tokens.6.14.1.nupkg.sha512",
         "microsoft.identitymodel.tokens.nuspec"
+      ]
+    },
+    "Mobile.BuildTools/2.0.245": {
+      "sha512": "XdslMfa0pFZ0V854nH52qrsXIfB8FKtf9f6AFJKZtDIwNCefkPG4UOUYg0UCoKtScmCcfhebj9xykulcZnp2Xg==",
+      "type": "package",
+      "path": "mobile.buildtools/2.0.245",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/AndroidManifest.targets",
+        "build/AppleManifests.targets",
+        "build/BuildEnvironmentDump.targets",
+        "build/ConfigurationManager.targets",
+        "build/Fizzler.dll",
+        "build/GitVersioning.targets",
+        "build/HarfBuzzSharp.dll",
+        "build/ImageResize.targets",
+        "build/Mac.targets",
+        "build/ManifestsShared.targets",
+        "build/Microsoft.Web.XmlTransform.dll",
+        "build/Mobile.BuildTools.Reference.dll",
+        "build/Mobile.BuildTools.Reference.pdb",
+        "build/Mobile.BuildTools.XamarinSdk.dll",
+        "build/Mobile.BuildTools.XamarinSdk.pdb",
+        "build/Mobile.BuildTools.dll",
+        "build/Mobile.BuildTools.pdb",
+        "build/Mobile.BuildTools.props",
+        "build/Mobile.BuildTools.targets",
+        "build/MonoAndroid.targets",
+        "build/NetStandard.targets",
+        "build/Newtonsoft.Json.Schema.dll",
+        "build/Newtonsoft.Json.dll",
+        "build/PlatformHead.targets",
+        "build/ScssToCss.targets",
+        "build/Secrets.targets",
+        "build/ShimSkiaSharp.dll",
+        "build/SkiaSharp.HarfBuzz.dll",
+        "build/SkiaSharp.dll",
+        "build/Svg.Custom.dll",
+        "build/Svg.Model.dll",
+        "build/Svg.Skia.dll",
+        "build/System.Buffers.dll",
+        "build/System.ComponentModel.Annotations.dll",
+        "build/System.Memory.dll",
+        "build/System.Numerics.Vectors.dll",
+        "build/System.Runtime.CompilerServices.Unsafe.dll",
+        "build/System.ValueTuple.dll",
+        "build/UAP.targets",
+        "build/arm64/libHarfBuzzSharp.dll",
+        "build/arm64/libSkiaSharp.dll",
+        "build/iOS.targets",
+        "build/libHarfBuzzSharp.dll",
+        "build/libHarfBuzzSharp.dylib",
+        "build/libSkiaSharp.dylib",
+        "build/libsass.dll",
+        "build/resources/resourceDefinition.json",
+        "build/runtimes/osx-x64/libsass.dylib",
+        "build/runtimes/win-x64/libsass.dll",
+        "build/runtimes/win-x86/libsass.dll",
+        "build/x64/libHarfBuzzSharp.dll",
+        "build/x64/libSkiaSharp.dll",
+        "build/x86/libHarfBuzzSharp.dll",
+        "build/x86/libSkiaSharp.dll",
+        "buildTransitive/Mobile.BuildTools.props",
+        "buildTransitive/Mobile.BuildTools.targets",
+        "icon.png",
+        "mobile.buildtools.2.0.245.nupkg.sha512",
+        "mobile.buildtools.nuspec",
+        "readme.md"
       ]
     },
     "Newtonsoft.Json/13.0.1": {
@@ -3304,6 +3381,7 @@
       "Lando >= 1.0.0",
       "Microsoft.AppCenter.Analytics >= 4.4.0",
       "Microsoft.AppCenter.Crashes >= 4.4.0",
+      "Mobile.BuildTools >= 2.0.245",
       "Xamarin.Essentials >= 1.6.1",
       "Xamarin.Forms >= 5.0.0.2012"
     ]
@@ -3360,6 +3438,10 @@
           "Microsoft.AppCenter.Crashes": {
             "target": "Package",
             "version": "[4.4.0, )"
+          },
+          "Mobile.BuildTools": {
+            "target": "Package",
+            "version": "[2.0.245, )"
           },
           "Xamarin.Essentials": {
             "target": "Package",

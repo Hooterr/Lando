@@ -1,6 +1,7 @@
 ﻿using Lando.Database.Services;
 using Lando.PageModels;
 using Lando.Services;
+using Lando.Utils;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace Lando
     public static class DependencyInjectionContainer
     {
         public const string ClientId = "b73814aa969745c99e28fbb75edc99bb";
-        public const string ClientSecretent = "tUvQlk3jWQiwapPcrzsnNFPnmEseuUHPRMjPZKQTDJLnrC2ApjcfvlsnIVbgkN2W";
+        public const string ClientSecretent = Secrets.AllegroClientSecret;
 
         public static IServiceProvider Create()
         {
