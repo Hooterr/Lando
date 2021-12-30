@@ -30,3 +30,5 @@ x64/
 build/
 bld/
 
+xamarin/Lando/Lando/Lando.iOS/obj/project.nuget.cache
+xamarin/Lando/Lando/Lando.Android/obj/project.nuget.cache
